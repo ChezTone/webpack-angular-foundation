@@ -1,0 +1,1 @@
+# Webpack-Angular-Foundation [![Build Status](https://travis-ci.org/ChezTone/webpack-angular-foundation.svg?branch=master)](https://travis-ci.org/ChezTone/webpack-angular-foundation)

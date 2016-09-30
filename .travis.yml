@@ -1,0 +1,17 @@
+sudo: requiered
+language: node_js
+services:
+   - docker
+node_js:
+   - '4.2'
+before_script:
+  - 'npm install -g webpack'
+script:
+  - 'npm test'
+  - 'npm build'
+after_script:
+  - docker build -t cheztone/cheztone-front .
+  - if [ "$TRAVIS_BRANCH" == "master" ]; then
+      docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
+      docker push cheztone/cheztone-front;
+      fi
