@@ -5,10 +5,9 @@ services:
 node_js:
    - '4.2'
 before_script:
-  - 'npm install -g webpack'
+  - 'npm install -g typescript webpack'
 script:
-  - 'npm test'
-  - 'npm build'
+  - 'npm run build'
 after_script:
   - docker build -t cheztone/cheztone-front .
   - if [ "$TRAVIS_BRANCH" == "master" ]; then
