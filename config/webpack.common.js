@@ -3,7 +3,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var helpers = require('./helpers');
 var path = require('path');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
-
+var purify = require("purifycss-webpack-plugin");
 
 
 module.exports = {
@@ -52,6 +52,12 @@ module.exports = {
             jQuery: 'jquery',
             $: 'jquery',
             jquery: 'jquery'
+        }),
+        new purify({
+            basePath: __dirname,
+            paths: [
+                'app/**/*.html'
+            ]
         })
     ] ,
     sassLoader: {
