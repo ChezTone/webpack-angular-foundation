@@ -1,4 +1,6 @@
 var helpers = require('./helpers');
+var webpack = require('webpack');
+var path = require('path');
 
 module.exports = {
     devtool: 'inline-source-map',
@@ -23,15 +25,26 @@ module.exports = {
                 loader: 'null'
             },
             {
-                test: /\.css$/,
-                exclude: helpers.root('src', 'app'),
-                loader: 'null'
-            },
-            {
-                test: /\.css$/,
-                include: helpers.root('src', 'app'),
-                loader: 'raw'
+                test: /\.scss$/,
+                exclude: /node_modules/,
+                loaders: ['raw-loader', 'sass-loader']
             }
         ]
     }
+    ,
+
+    plugins: [
+
+        new webpack.ProvidePlugin({
+            jQuery: 'jquery',
+            $: 'jquery',
+            jquery: 'jquery'
+        })
+
+    ]
+    ,
+    sassLoader: {
+    includePaths: [path.resolve(__dirname, "node_modules")]
 }
+
+};
